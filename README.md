@@ -36,5 +36,11 @@ I would like to add the site's address and title to bookmark manager
 3. Create the database using the `psql` command `CREATE DATABASE bookmark_manager;`
 
 4. Connect to the database using the `psql` command `\c bookmark_manager`
+  - After connecting to the database, create a table `CREATE TABLE bookmarks(id SERIAL PRIMARY KEY, url VARCHAR(60));`
 
 5. Run the query we have saved in the file `01_create_bookmarks_table.sql` to create a table
+
+### Creating Test Database
+
+- Follow the above steps starting from step 2 and create a testing database`CREATE DATABASE bookmark_manager_test;` and connect to this new database
+- You've now setup two databases for bookmark manager

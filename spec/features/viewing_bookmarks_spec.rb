@@ -4,13 +4,18 @@ feature 'viewing bookmarks' do
     expect(page).to have_content('Bookmark Manager')
   end
 
-  scenario 'view the bookmarks' do
-    visit('/')
-    click_button('View Bookmarks')
-    expect(page).to have_content('Your bookmarks')
+  scenario 'A user can see bookmarks' do
+    setup_test_database
+    connection = PG.connect(dbname: 'bookmark_manager_test')
 
-    expect(page).to have_content("http://www.google.com")
-    expect(page).to have_content("http://www.makersacademy.com")
-    expect(page).to have_content("http://www.destroyallsoftware.com")
+    connection.exec("INSERT INTO bookmarks VALUES(1, 'http://www.makersacademy.com');")
+    connection.exec("INSERT INTO bookmarks VALUES(2, 'http://www.destroyallsoftware.com');")
+    connection.exec("INSERT INTO bookmarks VALUES(3, 'http://www.google.com');")
+
+    visit('/bookmarks')
+
+    expect(page).to have_content "http://www.makersacademy.com"
+    expect(page).to have_content "http://www.destroyallsoftware.com"
+    expect(page).to have_content "http://www.google.com"
   end
 end
