@@ -43,4 +43,4 @@ I would like to add the site's address and title to bookmark manager
 ### Creating Test Database
 
 - Follow the above steps starting from step 2 and create a testing database`CREATE DATABASE bookmark_manager_test;` and connect to this new database
-- You've now setup two databases for bookmark manager
+- You've now setup two databases for bookmark manager (a test database and the live database)
